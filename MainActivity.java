@@ -8,38 +8,52 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
+    Integer color = 0x111111;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
-    @SuppressLint("ResourceAsColor")
     public void onGreen(View view) {
 
+        color = getResources().getColor(R.color.colorGreen);
         LinearLayout ll = (LinearLayout)findViewById(R.id.main);
-        ll.setBackgroundResource(R.color.colorGreen);
+        ll.setBackgroundColor(getResources().getColor(color));
 
     }
 
     public void onYellow(View view) {
 
+        color = getResources().getColor(R.color.colorYellow);
         LinearLayout ll = (LinearLayout)findViewById(R.id.main);
-        ll.setBackgroundResource(R.color.colorYellow);
+        ll.setBackgroundResource(color);
 
     }
 
     public void onRed(View view) {
 
+        color = getResources().getColor(R.color.colorRed);
         LinearLayout ll = (LinearLayout)findViewById(R.id.main);
-        ll.setBackgroundResource(R.color.colorRed);
+        ll.setBackgroundResource(color);
 
     }
 
-    public void ref(View view) {
-
-        LinearLayout ll = (LinearLayout)findViewById(R.id.main);
-        ll.setBackgroundColor(000000);
-
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("bgcolor", color);
     }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState != null && savedInstanceState.containsKey("bgcolor")) {
+            color = savedInstanceState.getInt("bgcolor");
+            findViewById(R.id.main).setBackgroundColor(color);
+        }
+    }
+
+
 }
