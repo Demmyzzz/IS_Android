@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    Integer color = 0x111111;
+    int color = 0x111111;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         color = getResources().getColor(R.color.colorGreen);
         LinearLayout ll = (LinearLayout)findViewById(R.id.main);
-        ll.setBackgroundColor(getResources().getColor(color));
+        ll.setBackgroundColor(getResources().getColor(R.color.colorGreen));
 
     }
 
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         color = getResources().getColor(R.color.colorYellow);
         LinearLayout ll = (LinearLayout)findViewById(R.id.main);
-        ll.setBackgroundResource(color);
+        ll.setBackgroundResource(R.color.colorYellow);
 
     }
 
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         color = getResources().getColor(R.color.colorRed);
         LinearLayout ll = (LinearLayout)findViewById(R.id.main);
-        ll.setBackgroundResource(color);
+        ll.setBackgroundResource(R.color.colorRed);
 
     }
 
